@@ -1,0 +1,52 @@
+[versions]
+spring-boot            = "3.5.3"
+spring-cloud           = "2025.0.0"
+spring-dep-mgmt        = "1.1.7"
+lombok                 = "1.18.38"
+mapstruct              = "1.6.3"
+resilience4j           = "2.3.0"
+flyway                 = "11.8.2"
+mariadb                = "3.5.3"
+
+[libraries]
+# ── Spring Boot starters ──────────────────────────────────────────────────────
+spring-boot-starter              = { module = "org.springframework.boot:spring-boot-starter",              version.ref = "spring-boot" }
+spring-boot-starter-web          = { module = "org.springframework.boot:spring-boot-starter-web",          version.ref = "spring-boot" }
+spring-boot-starter-webflux      = { module = "org.springframework.boot:spring-boot-starter-webflux",      version.ref = "spring-boot" }
+spring-boot-starter-data-jpa     = { module = "org.springframework.boot:spring-boot-starter-data-jpa",     version.ref = "spring-boot" }
+spring-boot-starter-data-redis   = { module = "org.springframework.boot:spring-boot-starter-data-redis",   version.ref = "spring-boot" }
+spring-boot-starter-actuator     = { module = "org.springframework.boot:spring-boot-starter-actuator",     version.ref = "spring-boot" }
+spring-boot-starter-test         = { module = "org.springframework.boot:spring-boot-starter-test",         version.ref = "spring-boot" }
+
+# ── Spring Boot BOM (import in subprojects that need full BOM) ────────────────
+spring-boot-dependencies         = { module = "org.springframework.boot:spring-boot-dependencies",         version.ref = "spring-boot" }
+
+# ── Spring Cloud ──────────────────────────────────────────────────────────────
+spring-cloud-starter-gateway              = { module = "org.springframework.cloud:spring-cloud-starter-gateway" }
+spring-cloud-starter-kubernetes-client-all = { module = "org.springframework.cloud:spring-cloud-starter-kubernetes-client-all" }
+spring-cloud-dependencies                 = { module = "org.springframework.cloud:spring-cloud-dependencies", version.ref = "spring-cloud" }
+
+# ── Messaging ─────────────────────────────────────────────────────────────────
+spring-kafka                     = { module = "org.springframework.kafka:spring-kafka" }
+
+# ── Resilience4j ──────────────────────────────────────────────────────────────
+resilience4j-spring-boot3        = { module = "io.github.resilience4j:resilience4j-spring-boot3",          version.ref = "resilience4j" }
+
+# ── Database ──────────────────────────────────────────────────────────────────
+flyway-core                      = { module = "org.flywaydb:flyway-core",                                  version.ref = "flyway" }
+# flyway-mysql provides the MariaDB-compatible Flyway dialect (same artifact, different module name from flyway 10+)
+flyway-mysql                     = { module = "org.flywaydb:flyway-mysql",                                 version.ref = "flyway" }
+mariadb-java-client              = { module = "org.mariadb.jdbc:mariadb-java-client",                      version.ref = "mariadb" }
+
+# ── Codegen ───────────────────────────────────────────────────────────────────
+mapstruct                        = { module = "org.mapstruct:mapstruct",                                   version.ref = "mapstruct" }
+mapstruct-processor              = { module = "org.mapstruct:mapstruct-processor",                         version.ref = "mapstruct" }
+lombok                           = { module = "org.projectlombok:lombok",                                  version.ref = "lombok" }
+
+# ── Observability ─────────────────────────────────────────────────────────────
+micrometer-registry-prometheus   = { module = "io.micrometer:micrometer-registry-prometheus" }
+opentelemetry-spring-boot-starter = { module = "io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter" }
+
+[plugins]
+spring-boot       = { id = "org.springframework.boot",            version.ref = "spring-boot" }
+spring-dep-mgmt   = { id = "io.spring.dependency-management",     version = "1.1.7" }

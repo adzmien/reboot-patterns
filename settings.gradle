@@ -1,0 +1,11 @@
+rootProject.name = 'reboot-patterns'
+
+// Pattern subprojects — uncomment each when the pattern subproject is created:
+//include ':patterns:p1-gateway'
+//include ':patterns:p2-resilience'
+//include ':patterns:p3-outbox'
+//include ':patterns:p4-saga-choreography'
+//include ':patterns:p5-saga-orchestration'
+//include ':patterns:p6-cqrs'
+//include ':patterns:p7-idempotency-dlq'
+//include ':patterns:p8-observability'
