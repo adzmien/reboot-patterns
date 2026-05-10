@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mariadb-config
+  namespace: reboot-patterns
+data:
+  my.cnf: |
+    [mysqld]
+    max_connections = 300
+    innodb_buffer_pool_size = 256M
+  init.sql: |
+    CREATE SCHEMA IF NOT EXISTS p1_gateway;
+    CREATE SCHEMA IF NOT EXISTS p2_resilience;
+    CREATE SCHEMA IF NOT EXISTS p3_outbox;
+    CREATE SCHEMA IF NOT EXISTS p4_saga_choreography;
+    CREATE SCHEMA IF NOT EXISTS p5_saga_orchestration;
+    CREATE SCHEMA IF NOT EXISTS p6_cqrs;
+    CREATE SCHEMA IF NOT EXISTS p7_idempotency_dlq;
+    CREATE SCHEMA IF NOT EXISTS p8_observability;
+    GRANT ALL PRIVILEGES ON p1_gateway.*           TO 'rebootuser'@'%';
+    GRANT ALL PRIVILEGES ON p2_resilience.*        TO 'rebootuser'@'%';
+    GRANT ALL PRIVILEGES ON p3_outbox.*            TO 'rebootuser'@'%';
+    GRANT ALL PRIVILEGES ON p4_saga_choreography.* TO 'rebootuser'@'%';
+    GRANT ALL PRIVILEGES ON p5_saga_orchestration.* TO 'rebootuser'@'%';
+    GRANT ALL PRIVILEGES ON p6_cqrs.*              TO 'rebootuser'@'%';
+    GRANT ALL PRIVILEGES ON p7_idempotency_dlq.*   TO 'rebootuser'@'%';
+    GRANT ALL PRIVILEGES ON p8_observability.*     TO 'rebootuser'@'%';
+    FLUSH PRIVILEGES;

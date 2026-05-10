@@ -1,4 +1,5 @@
 # Adapt and deploy MariaDB to reboot-patterns
+Status: done 2026-05-11
 
 ## Spec Reference
 
@@ -10,11 +11,11 @@ Adapt MariaDB K8s manifests from `com-reboot/reboot-common-k8s/mariadb/` into `i
 
 ## Acceptance Criteria
 
-- [ ] MariaDB pod is `Running` after `kubectl apply -f infra/k8s/mariadb/`
-- [ ] `SHOW SCHEMAS` returns all 8 pattern schemas
-- [ ] `rebootuser` can `CREATE TABLE` in `p1_gateway` (and each other schema) without errors
-- [ ] `nc -zv 100.66.8.44 30306` succeeds from Mac
-- [ ] Reapplying the manifests (`kubectl apply` again) is idempotent — no errors, pod does not restart
+- [x] MariaDB pod is `Running` after `kubectl apply -f infra/k8s/mariadb/`
+- [x] `SHOW SCHEMAS` returns all 8 pattern schemas
+- [x] `rebootuser` can `CREATE TABLE` in `p1_gateway` (and each other schema) without errors
+- [x] `nc -zv 100.66.8.44 30306` succeeds from Mac
+- [x] Reapplying the manifests (`kubectl apply` again) is idempotent — no errors, pod does not restart
 
 ## Blocked by
 
