@@ -2,7 +2,7 @@
 
 | ID  | Title                                                        | Type | Status | Spec    | Blocked by                          | File                                                              |
 | --- | ------------------------------------------------------------ | ---- | ------ | ------- | ----------------------------------- | ----------------------------------------------------------------- |
-| #1  | Create Gradle root scaffold                                  | AFK  | in-progress | ISSUE-1 | —                              | `1-create-gradle-root-scaffold.md`                                |
+| #1  | Create Gradle root scaffold                                  | AFK  | done        | ISSUE-1 | —                              | `1-create-gradle-root-scaffold.md`                                |
 | #2  | Adapt and deploy MariaDB to reboot-patterns                  | AFK  | open   | ISSUE-2 | #1                                  | `2-adapt-and-deploy-mariadb-to-reboot-patterns.md`                |
 | #3  | Adapt and deploy Kafka to reboot-patterns                    | AFK  | open   | ISSUE-3 | —                                   | `3-adapt-and-deploy-kafka-to-reboot-patterns.md`                  |
 | #4  | Adapt and deploy Redis to reboot-patterns                    | AFK  | open   | ISSUE-4 | —                                   | `4-adapt-and-deploy-redis-to-reboot-patterns.md`                  |

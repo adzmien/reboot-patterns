@@ -1,5 +1,5 @@
 # Create Gradle root scaffold
-Status: in-progress 2026-05-10
+Status: done 2026-05-11
 
 ## Spec Reference
 
