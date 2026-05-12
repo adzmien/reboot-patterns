@@ -1,5 +1,7 @@
 # Deploy Prometheus and Grafana
 
+Status: done 2026-05-13
+
 ## Spec Reference
 
 ISSUE-7 from `docs/specs/spec-curriculum-setup.md`

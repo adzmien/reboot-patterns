@@ -1,0 +1,42 @@
+---
+# ServiceAccount: Prometheus runs under this identity so the Kubernetes SD config
+# can call the API server to discover pods in the reboot-patterns namespace.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: prometheus
+  namespace: reboot-patterns
+
+---
+# ClusterRole: grants read access to pods, endpoints, nodes, and services cluster-wide.
+# Prometheus Kubernetes SD needs list/watch on these resources to discover scrape targets.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: prometheus
+rules:
+  - apiGroups: [""]
+    resources:
+      - nodes
+      - nodes/proxy
+      - services
+      - endpoints
+      - pods
+    verbs: ["get", "list", "watch"]
+  - nonResourceURLs: ["/metrics"]
+    verbs: ["get"]
+
+---
+# ClusterRoleBinding: binds the prometheus ClusterRole to the prometheus ServiceAccount.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: prometheus
+subjects:
+  - kind: ServiceAccount
+    name: prometheus
+    namespace: reboot-patterns

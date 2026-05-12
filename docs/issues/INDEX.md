@@ -8,6 +8,6 @@
 | #4  | Adapt and deploy Redis to reboot-patterns                    | AFK  | done        | ISSUE-4 | —                              | `4-adapt-and-deploy-redis-to-reboot-patterns.md`                  |
 | #5  | Deploy WireMock and create mocks directory structure         | AFK  | done        | ISSUE-5 | —                              | `5-deploy-wiremock-and-create-mocks-directory-structure.md`       |
 | #6  | Deploy Jaeger and OTel Collector                             | AFK  | done        | ISSUE-6 | —                                   | `6-deploy-jaeger-and-otel-collector.md`                           |
-| #7  | Deploy Prometheus and Grafana                                | AFK  | open   | ISSUE-7 | —                                   | `7-deploy-prometheus-and-grafana.md`                              |
+| #7  | Deploy Prometheus and Grafana                                | AFK  | done | ISSUE-7 | —                                   | `7-deploy-prometheus-and-grafana.md`                              |
 | #8  | Deploy local registry and configure k3s mirror               | AFK  | open   | ISSUE-8 | —                                   | `8-deploy-local-registry-and-configure-k3s-mirror.md`            |
 | #9  | Write infra/k8s/apply-all.sh with smoke checks               | AFK  | open   | ISSUE-9 | #2, #3, #4, #5, #6, #7, #8         | `9-write-infra-k8s-apply-all-sh-with-smoke-checks.md`            |
