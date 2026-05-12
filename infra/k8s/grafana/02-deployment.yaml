@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  namespace: reboot-patterns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+        - name: grafana
+          image: grafana/grafana:11.6.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 3000
+          env:
+            # Default admin credentials for the learning environment — not production-safe.
+            - name: GF_SECURITY_ADMIN_USER
+              value: "admin"
+            - name: GF_SECURITY_ADMIN_PASSWORD
+              value: "admin"
+            # Disable the change-password prompt on first login so curl tests work immediately.
+            - name: GF_AUTH_DISABLE_LOGIN_FORM
+              value: "false"
+          volumeMounts:
+            # Grafana reads provisioning/datasources/*.yaml at startup to auto-create datasources.
+            - name: datasources
+              mountPath: /etc/grafana/provisioning/datasources/datasources.yaml
+              subPath: datasources.yaml
+      volumes:
+        - name: datasources
+          configMap:
+            name: grafana-datasources

@@ -1,0 +1,47 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: reboot-patterns
+data:
+  prometheus.yml: |
+    global:
+      # Scrape every 15 seconds — short enough to catch transient failures in a learning session.
+      scrape_interval: 15s
+      evaluation_interval: 15s
+
+    scrape_configs:
+      # Kubernetes pod discovery: finds any pod in the reboot-patterns namespace that carries
+      # the annotation prometheus.io/scrape: "true". Pattern services add that annotation to
+      # opt in; nothing is scraped by default.
+      - job_name: kubernetes-pods
+        kubernetes_sd_configs:
+          - role: pod
+            namespaces:
+              names:
+                - reboot-patterns
+        relabel_configs:
+          # Drop pods that have NOT opted in.
+          - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
+            action: keep
+            regex: "true"
+          # Honour prometheus.io/path annotation if the service exposes metrics at a custom path.
+          - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_path]
+            action: replace
+            target_label: __metrics_path__
+            regex: (.+)
+          # Honour prometheus.io/port annotation so we scrape the right container port.
+          - source_labels: [__address__, __meta_kubernetes_pod_annotation_prometheus_io_port]
+            action: replace
+            regex: ([^:]+)(?::\d+)?;(\d+)
+            replacement: $1:$2
+            target_label: __address__
+          # Carry pod name and namespace as labels on every scraped metric.
+          - action: labelmap
+            regex: __meta_kubernetes_pod_label_(.+)
+          - source_labels: [__meta_kubernetes_namespace]
+            action: replace
+            target_label: kubernetes_namespace
+          - source_labels: [__meta_kubernetes_pod_name]
+            action: replace
+            target_label: kubernetes_pod_name
