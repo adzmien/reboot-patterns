@@ -1,4 +1,5 @@
 # Deploy WireMock and create mocks directory structure
+Status: done 2026-05-12
 
 ## Spec Reference
 
@@ -10,11 +11,11 @@ Write WireMock K8s manifests in `mocks/deployment/` (Deployment: `wiremock/wirem
 
 ## Acceptance Criteria
 
-- [ ] WireMock pod is `Running` after `kubectl apply -f mocks/deployment/`
-- [ ] `curl -s http://100.66.8.44:30080/__admin/mappings` returns HTTP 200 with an empty mappings array
-- [ ] A stub POSTed to `/__admin/mappings` with `metadata.pattern: p1` is returned in the mappings list
-- [ ] `DELETE /__admin/mappings` filtered on that metadata successfully removes only that stub
-- [ ] `mocks/stubs/README.md` exists and describes the purpose of permanent cross-pattern stubs
+- [x] WireMock pod is `Running` after `kubectl apply -f mocks/deployment/`
+- [x] `curl -s http://100.66.8.44:30080/__admin/mappings` returns HTTP 200 with an empty mappings array
+- [x] A stub POSTed to `/__admin/mappings` with `metadata.pattern: p1` is returned in the mappings list
+- [x] `DELETE /__admin/mappings` filtered on that metadata successfully removes only that stub
+- [x] `mocks/stubs/README.md` exists and describes the purpose of permanent cross-pattern stubs
 
 ## Blocked by
 
