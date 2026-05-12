@@ -4,7 +4,7 @@
 | --- | ------------------------------------------------------------ | ---- | ------ | ------- | ----------------------------------- | ----------------------------------------------------------------- |
 | #1  | Create Gradle root scaffold                                  | AFK  | done        | ISSUE-1 | —                              | `1-create-gradle-root-scaffold.md`                                |
 | #2  | Adapt and deploy MariaDB to reboot-patterns                  | AFK  | done | ISSUE-2 | #1                             | `2-adapt-and-deploy-mariadb-to-reboot-patterns.md`                |
-| #3  | Adapt and deploy Kafka to reboot-patterns                    | AFK  | open   | ISSUE-3 | —                                   | `3-adapt-and-deploy-kafka-to-reboot-patterns.md`                  |
+| #3  | Adapt and deploy Kafka to reboot-patterns                    | AFK  | done        | ISSUE-3 | —                              | `3-adapt-and-deploy-kafka-to-reboot-patterns.md`                  |
 | #4  | Adapt and deploy Redis to reboot-patterns                    | AFK  | open   | ISSUE-4 | —                                   | `4-adapt-and-deploy-redis-to-reboot-patterns.md`                  |
 | #5  | Deploy WireMock and create mocks directory structure         | AFK  | open   | ISSUE-5 | —                                   | `5-deploy-wiremock-and-create-mocks-directory-structure.md`       |
 | #6  | Deploy Jaeger and OTel Collector                             | AFK  | open   | ISSUE-6 | —                                   | `6-deploy-jaeger-and-otel-collector.md`                           |
