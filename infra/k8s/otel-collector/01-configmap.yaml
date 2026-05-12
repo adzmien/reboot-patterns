@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: otel-collector-config
+  namespace: reboot-patterns
+data:
+  config.yaml: |
+    # Receivers: accept OTLP spans from instrumented services via gRPC.
+    receivers:
+      otlp:
+        protocols:
+          grpc:
+            endpoint: "0.0.0.0:4317"
+          http:
+            endpoint: "0.0.0.0:4318"
+
+    # Processors: batch spans before exporting to reduce network round-trips.
+    processors:
+      batch:
+
+    # Exporters: send spans to Jaeger using in-cluster hostname "jaeger" (ClusterIP service).
+    # Port 4317 is Jaeger all-in-one's OTLP gRPC endpoint.
+    exporters:
+      otlp/jaeger:
+        endpoint: "jaeger:4317"
+        tls:
+          insecure: true
+
+    # Service: wire receivers → processors → exporters into a single trace pipeline.
+    service:
+      pipelines:
+        traces:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [otlp/jaeger]
