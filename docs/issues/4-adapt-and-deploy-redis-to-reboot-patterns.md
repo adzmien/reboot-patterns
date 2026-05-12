@@ -1,4 +1,5 @@
 # Adapt and deploy Redis to reboot-patterns
+Status: done 2026-05-12
 
 ## Spec Reference
 
