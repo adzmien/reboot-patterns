@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+  namespace: reboot-patterns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jaeger
+  template:
+    metadata:
+      labels:
+        app: jaeger
+    spec:
+      containers:
+        - name: jaeger
+          # all-in-one bundles collector, query, and UI in a single process — good for dev/learning.
+          image: jaegertracing/all-in-one:1.62.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: ui
+              containerPort: 16686   # Jaeger query/UI HTTP
+            - name: otlp-grpc
+              containerPort: 4317    # OTLP gRPC (accepted directly by Jaeger all-in-one)
+          env:
+            # Store spans in memory only; no persistence needed for this learning environment.
+            - name: COLLECTOR_OTLP_ENABLED
+              value: "true"
