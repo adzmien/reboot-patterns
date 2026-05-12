@@ -1,6 +1,6 @@
 # Write infra/k8s/apply-all.sh with smoke checks
 
-Status: in-progress 2026-05-13
+Status: done 2026-05-13
 
 ## Spec Reference
 
