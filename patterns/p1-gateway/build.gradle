@@ -1,0 +1,37 @@
+// Pattern 1 — API Gateway
+// Wires Spring Cloud Gateway (reactive, Netty) with Kubernetes-native service discovery.
+// No Eureka: the gateway discovers upstream services by querying the K8s API directly.
+
+plugins {
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dep.mgmt)
+}
+
+dependencyManagement {
+    imports {
+        // Spring Boot BOM — pins versions for all spring-boot-starter-* artifacts
+        mavenBom(libs.spring.boot.dependencies.get().toString())
+        // Spring Cloud BOM — pins versions for gateway, kubernetes discovery, etc.
+        mavenBom(libs.spring.cloud.dependencies.get().toString())
+    }
+}
+
+dependencies {
+    // Reactive gateway — replaces a traditional reverse proxy with code-configured routes
+    implementation libs.spring.cloud.starter.gateway
+
+    // Kubernetes-native service discovery — reads K8s Service objects to resolve lb:// URIs
+    implementation libs.spring.cloud.starter.kubernetes.client.all
+
+    // Health + metrics endpoints
+    implementation libs.spring.boot.starter.actuator
+
+    // Prometheus metrics scraping endpoint (/actuator/prometheus)
+    runtimeOnly libs.micrometer.registry.prometheus
+
+    // Structured JSON logging (used by logback-spring.xml)
+    implementation libs.logstash.logback.encoder
+
+    // Test scope only
+    testImplementation libs.spring.boot.starter.test
+}

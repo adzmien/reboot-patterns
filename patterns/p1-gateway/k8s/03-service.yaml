@@ -1,0 +1,19 @@
+---
+# NodePort Service exposing the gateway on port 30001.
+# External traffic: http://<node-ip>:30001/<path> → gateway pod :8080 → lb://upstream
+apiVersion: v1
+kind: Service
+metadata:
+  name: p1-gateway
+  namespace: reboot-patterns
+  labels:
+    app: p1-gateway
+spec:
+  type: NodePort
+  selector:
+    app: p1-gateway
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
+      nodePort: 30001
