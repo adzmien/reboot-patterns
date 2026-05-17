@@ -14,3 +14,8 @@
 | #10 | p1-gateway Build Scaffold + Route Config + K8s Deployment    | AFK  | done   | ISSUE-1 + ISSUE-2 | —           | `10-p1-gateway-build-scaffold-route-config-k8s-deployment.md`    |
 | #11 | Correlation ID Propagation + Structured Logging              | AFK  | open   | ISSUE-3 | #10                            | `11-correlation-id-propagation-and-structured-logging.md`        |
 | #12 | Fast-Fail Error Handling + Canonical-Failure Test Infra      | AFK  | open   | ISSUE-4 | #11                            | `12-fast-fail-error-handling-and-canonical-failure-test-infrastructure.md` |
+| #5  | Deploy WireMock and create mocks directory structure         | AFK  | open   | ISSUE-5 | —                                   | `5-deploy-wiremock-and-create-mocks-directory-structure.md`       |
+| #6  | Deploy Jaeger and OTel Collector                             | AFK  | open   | ISSUE-6 | —                                   | `6-deploy-jaeger-and-otel-collector.md`                           |
+| #7  | Deploy Prometheus and Grafana                                | AFK  | open   | ISSUE-7 | —                                   | `7-deploy-prometheus-and-grafana.md`                              |
+| #8  | Deploy local registry and configure k3s mirror               | AFK  | open   | ISSUE-8 | —                                   | `8-deploy-local-registry-and-configure-k3s-mirror.md`            |
+| #9  | Write infra/k8s/apply-all.sh with smoke checks               | AFK  | open   | ISSUE-9 | #2, #3, #4, #5, #6, #7, #8         | `9-write-infra-k8s-apply-all-sh-with-smoke-checks.md`            |
