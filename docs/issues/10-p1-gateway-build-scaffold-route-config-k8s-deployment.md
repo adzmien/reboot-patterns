@@ -1,4 +1,5 @@
 # p1-gateway Build Scaffold + Route Config + K8s Deployment
+Status: done 2026-05-17
 
 ## Spec Reference
 

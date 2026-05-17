@@ -1,0 +1,37 @@
+---
+# ServiceAccount used by the gateway pod.
+# Spring Cloud Kubernetes Discovery uses this identity to call the K8s API.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: p1-gateway
+  namespace: reboot-patterns
+
+---
+# Namespaced Role — grants the minimum permissions the gateway needs
+# to discover services and endpoints within the reboot-patterns namespace.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: p1-gateway-discovery
+  namespace: reboot-patterns
+rules:
+  - apiGroups: [""]
+    resources: ["services", "endpoints", "pods"]
+    verbs: ["get", "list", "watch"]
+
+---
+# Binds the Role to the ServiceAccount created above.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: p1-gateway-discovery
+  namespace: reboot-patterns
+subjects:
+  - kind: ServiceAccount
+    name: p1-gateway
+    namespace: reboot-patterns
+roleRef:
+  kind: Role
+  apiGroup: rbac.authorization.k8s.io
+  name: p1-gateway-discovery
