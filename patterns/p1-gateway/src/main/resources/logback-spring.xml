@@ -1,16 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Minimal console appender for Pattern 1 — API Gateway.
-     Issue #11 will replace this with a JSON/structured-logging version using logstash-logback-encoder. -->
+<!--
+  Structured JSON logging for Pattern 1 — API Gateway (Issue #11).
+  LogstashEncoder writes every log event as a single JSON object to stdout.
+  Each field added via LogstashMarker (e.g. method, path, downstream, status,
+  latencyMs, correlationId) appears as a first-class JSON key — parseable with jq.
+-->
 <configuration>
 
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5level [%thread] %logger{36} - %msg%n</pattern>
-        </encoder>
+    <appender name="JSON_STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
     </appender>
 
+    <!-- Suppress noisy Spring Cloud Kubernetes bootstrap noise at WARN level -->
+    <logger name="org.springframework.cloud.kubernetes" level="WARN"/>
+    <logger name="io.fabric8" level="WARN"/>
+
     <root level="INFO">
-        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="JSON_STDOUT"/>
     </root>
 
 </configuration>

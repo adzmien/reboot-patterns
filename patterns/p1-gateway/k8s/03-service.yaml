@@ -1,6 +1,7 @@
 ---
-# NodePort Service exposing the gateway on port 30001.
+# NodePort Service exposing the gateway on port 30001 and the actuator on port 30081.
 # External traffic: http://<node-ip>:30001/<path> → gateway pod :8080 → lb://upstream
+# Actuator:         http://<node-ip>:30081/actuator/health → gateway pod :8081
 apiVersion: v1
 kind: Service
 metadata:
@@ -17,3 +18,7 @@ spec:
       port: 8080
       targetPort: 8080
       nodePort: 30001
+    - name: actuator
+      port: 8081
+      targetPort: 8081
+      nodePort: 30081

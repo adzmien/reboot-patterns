@@ -1,5 +1,7 @@
 # Correlation ID Propagation + Structured Logging
 
+Status: done 2026-05-17
+
 ## Spec Reference
 
 ISSUE-3 from `docs/specs/spec-p1-gateway.md`
@@ -24,12 +26,12 @@ Every request through the gateway carries an `X-Correlation-ID` header (generate
 
 ## Acceptance Criteria
 
-- [ ] `GET /order/123` without `X-Correlation-ID` header → response includes `X-Correlation-ID` header with a value matching UUID format (`[0-9a-f-]{36}`)
-- [ ] `GET /order/456` with `X-Correlation-ID: test-abc-123` → response `X-Correlation-ID` header equals `test-abc-123` (unchanged)
-- [ ] WireMock received-request for the above call contains request header `X-Correlation-ID: test-abc-123` (verified via `GET http://100.66.8.44:30080/__admin/requests`)
-- [ ] Gateway stdout log contains a parseable JSON line with fields `method`, `path`, `downstream`, `status`, `correlationId`, and a non-negative integer `latencyMs` (verified with `kubectl logs deploy/p1-gateway -n reboot-patterns | tail -1 | jq .`)
-- [ ] No `X-Correlation-ID` duplication in forwarded headers (single value, not doubled)
-- [ ] `GET http://100.66.8.44:8081/actuator/health` returns HTTP 200 (actuator reachable on management port)
+- [x] `GET /order/123` without `X-Correlation-ID` header → response includes `X-Correlation-ID` header with a value matching UUID format (`[0-9a-f-]{36}`)
+- [x] `GET /order/456` with `X-Correlation-ID: test-abc-123` → response `X-Correlation-ID` header equals `test-abc-123` (unchanged)
+- [x] WireMock received-request for the above call contains request header `X-Correlation-ID: test-abc-123` (verified via `GET http://100.66.8.44:30080/__admin/requests`)
+- [x] Gateway stdout log contains a parseable JSON line with fields `method`, `path`, `downstream`, `status`, `correlationId`, and a non-negative integer `latencyMs` (verified with `kubectl logs deploy/p1-gateway -n reboot-patterns | tail -1 | jq .`)
+- [x] No `X-Correlation-ID` duplication in forwarded headers (single value, not doubled)
+- [x] `GET http://100.66.8.44:8081/actuator/health` returns HTTP 200 (actuator reachable on management port — external NodePort 30081)
 
 ## Blocked by
 
