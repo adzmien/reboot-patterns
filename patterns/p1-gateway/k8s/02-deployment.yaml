@@ -1,0 +1,43 @@
+---
+# Deployment for Pattern 1 — API Gateway.
+# The image is pulled from the cluster-internal registry mirror (localhost:30500).
+# Port 8080 handles routed traffic; port 8081 exposes the actuator (health, prometheus).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: p1-gateway
+  namespace: reboot-patterns
+  labels:
+    app: p1-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: p1-gateway
+  template:
+    metadata:
+      labels:
+        app: p1-gateway
+    spec:
+      serviceAccountName: p1-gateway
+      containers:
+        - name: p1-gateway
+          image: localhost:30500/p1-gateway:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: actuator
+              containerPort: 8081
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8081
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8081
+            initialDelaySeconds: 30
+            periodSeconds: 20

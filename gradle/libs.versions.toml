@@ -46,6 +46,7 @@ lombok                           = { module = "org.projectlombok:lombok",       
 # ── Observability ─────────────────────────────────────────────────────────────
 micrometer-registry-prometheus   = { module = "io.micrometer:micrometer-registry-prometheus" }
 opentelemetry-spring-boot-starter = { module = "io.opentelemetry.instrumentation:opentelemetry-spring-boot-starter" }
+logstash-logback-encoder         = { module = "net.logstash.logback:logstash-logback-encoder", version = "8.0" }
 
 [plugins]
 spring-boot       = { id = "org.springframework.boot",            version.ref = "spring-boot" }

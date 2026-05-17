@@ -1,5 +1,7 @@
 # Deploy local registry and configure k3s mirror
 
+Status: done 2026-05-13
+
 ## Spec Reference
 
 ISSUE-8 from `docs/specs/spec-curriculum-setup.md`

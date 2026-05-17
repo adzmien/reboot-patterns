@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wiremock
+  namespace: reboot-patterns
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wiremock
+  template:
+    metadata:
+      labels:
+        app: wiremock
+    spec:
+      containers:
+        - name: wiremock
+          image: wiremock/wiremock:3.10.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          # --global-response-templating enables Handlebars templating in all stub responses
+          # so stubs can reference request values (e.g. {{request.pathSegments.[1]}})
+          # without needing to opt in per-stub.
+          args:
+            - "--global-response-templating"

@@ -1,0 +1,33 @@
+---
+# NodePort service: exposes Prometheus UI at http://<node-ip>:30090 for browser access and curl checks.
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-nodeport
+  namespace: reboot-patterns
+spec:
+  type: NodePort
+  selector:
+    app: prometheus
+  ports:
+    - name: http
+      port: 9090
+      targetPort: 9090
+      nodePort: 30090
+
+---
+# ClusterIP service: Grafana uses this in-cluster hostname "prometheus:9090" to reach Prometheus
+# without going through the NodePort external address.
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus
+  namespace: reboot-patterns
+spec:
+  type: ClusterIP
+  selector:
+    app: prometheus
+  ports:
+    - name: http
+      port: 9090
+      targetPort: 9090

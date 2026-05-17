@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasources
+  namespace: reboot-patterns
+data:
+  # Grafana datasource provisioning: Grafana loads this file at startup and creates the
+  # Prometheus datasource automatically — no manual UI clicks required.
+  datasources.yaml: |
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        type: prometheus
+        # In-cluster ClusterIP service name; Grafana reaches Prometheus inside the cluster.
+        # Do NOT use the NodePort external address here — that would route traffic out
+        # and back in unnecessarily.
+        url: http://prometheus:9090
+        access: proxy
+        isDefault: true
+        editable: false

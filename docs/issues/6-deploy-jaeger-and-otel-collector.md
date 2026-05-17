@@ -1,4 +1,5 @@
 # Deploy Jaeger and OTel Collector
+Status: done 2026-05-13
 
 ## Spec Reference
 
