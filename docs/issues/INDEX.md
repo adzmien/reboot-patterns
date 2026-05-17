@@ -11,6 +11,6 @@
 | #7  | Deploy Prometheus and Grafana                                | AFK  | done | ISSUE-7 | —                                   | `7-deploy-prometheus-and-grafana.md`                              |
 | #8  | Deploy local registry and configure k3s mirror               | AFK  | done        | ISSUE-8 | —                              | `8-deploy-local-registry-and-configure-k3s-mirror.md`            |
 | #9  | Write infra/k8s/apply-all.sh with smoke checks               | AFK  | done        | ISSUE-9 | #2, #3, #4, #5, #6, #7, #8    | `9-write-infra-k8s-apply-all-sh-with-smoke-checks.md`            |
-| #10 | p1-gateway Build Scaffold + Route Config + K8s Deployment    | AFK  | open   | ISSUE-1 + ISSUE-2 | —           | `10-p1-gateway-build-scaffold-route-config-k8s-deployment.md`    |
+| #10 | p1-gateway Build Scaffold + Route Config + K8s Deployment    | AFK  | in-progress   | ISSUE-1 + ISSUE-2 | —           | `10-p1-gateway-build-scaffold-route-config-k8s-deployment.md`    |
 | #11 | Correlation ID Propagation + Structured Logging              | AFK  | open   | ISSUE-3 | #10                            | `11-correlation-id-propagation-and-structured-logging.md`        |
 | #12 | Fast-Fail Error Handling + Canonical-Failure Test Infra      | AFK  | open   | ISSUE-4 | #11                            | `12-fast-fail-error-handling-and-canonical-failure-test-infrastructure.md` |
