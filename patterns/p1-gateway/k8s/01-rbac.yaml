@@ -17,7 +17,7 @@ metadata:
   namespace: reboot-patterns
 rules:
   - apiGroups: [""]
-    resources: ["services", "endpoints"]
+    resources: ["services", "endpoints", "pods"]
     verbs: ["get", "list", "watch"]
 
 ---
