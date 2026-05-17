@@ -1,5 +1,7 @@
 # Codify Cross-Platform amd64 Docker Build Process
 
+Status: done 2026-05-18
+
 ## Spec Reference
 
 Operational follow-up — no spec ISSUE. Surfaced during #11 implementation.
