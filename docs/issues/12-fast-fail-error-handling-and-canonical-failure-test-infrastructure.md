@@ -1,5 +1,7 @@
 # Fast-Fail Error Handling + Canonical-Failure Test Infrastructure
 
+Status: done 2026-05-20
+
 ## Spec Reference
 
 ISSUE-4 from `docs/specs/spec-p1-gateway.md`
