@@ -13,5 +13,5 @@
 | #9  | Write infra/k8s/apply-all.sh with smoke checks               | AFK  | done        | ISSUE-9 | #2, #3, #4, #5, #6, #7, #8    | `9-write-infra-k8s-apply-all-sh-with-smoke-checks.md`            |
 | #10 | p1-gateway Build Scaffold + Route Config + K8s Deployment    | AFK  | done   | ISSUE-1 + ISSUE-2 | —           | `10-p1-gateway-build-scaffold-route-config-k8s-deployment.md`    |
 | #11 | Correlation ID Propagation + Structured Logging              | AFK  | done        | ISSUE-3 | #10                       | `11-correlation-id-propagation-and-structured-logging.md`        |
-| #12 | Fast-Fail Error Handling + Canonical-Failure Test Infra      | AFK  | open   | ISSUE-4 | #11                            | `12-fast-fail-error-handling-and-canonical-failure-test-infrastructure.md` |
+| #12 | Fast-Fail Error Handling + Canonical-Failure Test Infra      | AFK  | done   | ISSUE-4 | #11                            | `12-fast-fail-error-handling-and-canonical-failure-test-infrastructure.md` |
 | #13 | Codify Cross-Platform amd64 Docker Build Process             | AFK  | done        | —       | #11                       | `13-codify-cross-platform-amd64-docker-build-process.md`                  |
